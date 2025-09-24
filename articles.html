@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的文章 | 宁静空间</title>
+    <script src="https://kit.fontawesome.com/7fa081f250.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">宁静空间</a>
+            <nav class="nav-links">
+                <a href="index.html#home">首页</a>
+                <a href="index.html#about">关于我</a>
+                <a href="index.html#skills">技能</a>
+                <a href="index.html#projects">项目</a>
+                <a href="articles.html">文章</a>
+                <a href="index.html#contact">联系</a>
+            </nav>
+            <button class="menu-toggle" aria-label="菜单">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 文章页面标题 -->
+    <section class="page-header">
+        <div class="container">
+            <h1>我的技术文章</h1>
+            <p>分享开发经验、技术思考和学习心得</p>
+        </div>
+    </section>
+
+    <!-- 文章列表 -->
+    <section class="all-articles">
+        <div class="container">
+            <div class="articles-list" id="all-articles">
+                <!-- 文章将通过JavaScript动态加载 -->
+                <div class="loading">加载中...</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    // 加载所有文章
+    fetch('../data/articles.json')
+        .then(response => response.json())
+        .then(articles => {
+            // 按日期排序，最新的在前
+            const sortedArticles = articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+            const articlesContainer = document.getElementById('all-articles');
+            
+            // 清空加载提示
+            articlesContainer.innerHTML = '';
+            
+            // 生成文章列表
+            sortedArticles.forEach((article, index) => {
+                const articleElement = document.createElement('article');
+                articleElement.className = 'full-article-card';
+                // 最后一篇文章不需要底部边框
+                if (index === sortedArticles.length - 1) {
+                    articleElement.classList.add('last-article');
+                }
+                
+                articleElement.innerHTML = `
+                    <h2><a href="${article.link}">${article.title}</a></h2>
+                    <p class="article-meta">
+                        <span><i class="fa fa-calendar"></i> ${article.date}</span>
+                        <span><i class="fa fa-tag"></i> ${article.tag}</span>
+                        <span><i class="fa fa-clock-o"></i> 阅读时间: ${article.readTime}</span>
+                    </p>
+                    <p>${article.excerpt}</p>
+                    <a href="${article.link}" class="read-more">继续阅读 <i class="fa fa-long-arrow-right"></i></a>
+                `;
+                articlesContainer.appendChild(articleElement);
+            });
+        })
+        .catch(error => {
+            console.error('加载文章失败:', error);
+            document.getElementById('all-articles').innerHTML = '<div class="error">加载文章失败，请稍后再试</div>';
+        });
+    </script>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 宁静空间PeaceSpace. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的项目 | 宁静空间</title>
+    <script src="https://kit.fontawesome.com/7fa081f250.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏（与文章页保持一致） -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">宁静空间</a>
+            <nav class="nav-links">
+                <a href="index.html#home">首页</a>
+                <a href="index.html#about">关于我</a>
+                <a href="index.html#skills">技能</a>
+                <a href="projects.html">项目</a>
+                <a href="articles.html">文章</a>
+                <a href="index.html#contact">联系</a>
+            </nav>
+            <button class="menu-toggle" aria-label="菜单">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 项目页面标题（复用文章页标题样式） -->
+    <section class="page-header">
+        <div class="container">
+            <h1>我的开发项目</h1>
+            <p>展示我参与和独立开发的各类项目，包含代码实现和技术细节</p>
+        </div>
+    </section>
+
+    <!-- 项目列表区域 -->
+    <section class="all-projects projects-page"> <!-- 新增 projects-page 类 -->
+        <div class="container">
+            <div class="projects-list" id="all-projects">
+                <!-- 项目将通过JavaScript动态加载 -->
+                <div class="loading">加载中...</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    // 加载所有项目
+    fetch('../data/projects.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('网络响应不正常');
+            }
+            return response.json();
+        })
+        .then(projects => {
+            // 按日期排序，最新的在前
+            const sortedProjects = projects.sort((a, b) => new Date(b.date) - new Date(a.date));
+            const projectsContainer = document.getElementById('all-projects');
+            
+            // 清空加载提示
+            projectsContainer.innerHTML = '';
+            
+            // 生成项目列表
+            sortedProjects.forEach((project, index) => {
+                const projectElement = document.createElement('div');
+                projectElement.className = 'project-card';
+                // 最后一个项目移除底部边框
+                if (index === sortedProjects.length - 1) {
+                    projectElement.classList.add('last-project');
+                }
+                
+                // 在生成项目卡片的代码中，修改图片部分为：
+                projectElement.innerHTML = `
+                    <div class="project-img-container"> <!-- 新增图片容器 -->
+                        <img src="${project.image}" alt="${project.title}" class="project-img">
+                    </div>
+                    <h3><a href="${project.link}">${project.title}</a></h3>
+                    <p class="article-meta">
+                        <span><i class="fa fa-calendar"></i> ${project.date}</span>
+                        <span><i class="fa fa-tag"></i> ${project.category}</span>
+                        <span><i class="fa fa-code-fork"></i> ${project.techStack}</span>
+                    </p>
+                    <p>${project.description}</p>
+                    <div class="project-actions">
+                        <a href="${project.link}" class="read-more">查看详情 <i class="fa fa-long-arrow-right"></i></a>
+                        ${project.github ? `<a href="${project.github}" target="_blank" class="read-more github-link">
+                            <i class="fa fa-github"></i> 源码
+                        </a>` : ''}
+                    </div>
+                `;
+                projectsContainer.appendChild(projectElement);
+            });
+        })
+        .catch(error => {
+            console.error('加载项目失败:', error);
+            document.getElementById('all-projects').innerHTML = '<div class="error">加载项目失败，请稍后再试</div>';
+        });
+    </script>
+
+    <!-- 页脚（与其他页面保持一致） -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 宁静空间PeaceSpace. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宁静空间</title>
+    <script src="https://kit.fontawesome.com/7fa081f250.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="navbar">
+        <div class="container">
+            <a href="#" class="logo">宁静空间</a>
+            <nav class="nav-links">
+                <a href="#home">首页</a>
+                <a href="#about">关于我</a>
+                <a href="#skills">技能</a>
+                <a href="#projects">项目</a>
+                <a href="#contact">联系</a>
+            </nav>
+            <button class="menu-toggle" aria-label="菜单">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>你好，我是<span class="highlight">宁静火箭</span></h1>
+                <p>这是我心血来潮创作的个人网站</p>
+                <a href="#contact" class="btn">联系我</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>关于我</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>我是一名充满激情而又持续不断学习的开发者，专注于前端和后端技术。拥有半年的开发经验，热衷于创建既美观又实用的网站和应用程序。</p>
+                    <p>我不断学习新技术，致力于为用户提供最佳的数字体验。无论是媒体制作、Web应用还是移动应用，我都能提供专业的解决方案。</p>
+                </div>
+                <div class="about-image">
+                    <img src="../images/avatar.jpg" alt="个人照片" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>我的技能</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fa fa-code"></i>
+                    <h3>Web开发</h3>
+                    <p>HTML5, CSS3, JavaScript, React, Vue</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa fa-mobile"></i>
+                    <h3>移动开发</h3>
+                    <p>响应式设计, 移动优先开发</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa fa-server"></i>
+                    <h3>后端开发</h3>
+                    <p>Node.js, Express, RESTful API</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa fa-paint-brush"></i>
+                    <h3>UI/UX设计</h3>
+                    <p>Figma, 交互设计, 用户体验优化</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 项目 -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>我的项目</h2>
+            <div class="projects-grid" id="projects-container">
+                <!-- 项目将通过JavaScript动态加载 -->
+                <div class="loading">加载中...</div>
+            </div>
+        </div>
+        <div class="projects-link">
+            <a href="projects.html" class="btn">查看所有项目</a>
+        </div>
+    </section>
+
+    <script>
+    // 加载项目数据（与文章加载逻辑保持一致）
+    fetch('../data/projects.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('网络响应不正常');
+            }
+            return response.json();
+        })
+        .then(projects => {
+            const projectsContainer = document.getElementById('projects-container');
+            // 清空加载提示
+            projectsContainer.innerHTML = '';
+            
+            // 生成项目卡片（包含所有字段）
+            projects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                // 处理GitHub链接（为空时不显示）
+                const githubLink = project.github 
+                    ? `<a href="${project.github}" target="_blank" class="github-link" aria-label="GitHub仓库">
+                        <i class="fa fa-github"></i> 源码
+                    </a>` 
+                    : '';
+                
+                projectCard.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}" class="project-img">
+                    <h3><a href="${project.link}">${project.title}</a></h3>
+                    <p class="article-meta">
+                        <span><i class="fa fa-calendar"></i> ${project.date}</span>
+                        <span><i class="fa fa-folder"></i> ${project.category}</span>
+                    </p>
+                    <p class="tech-stack"><strong>技术栈：</strong>${project.techStack}</p>
+                    <p>${project.description}</p>
+                    <div class="project-actions">
+                        <a href="${project.link}" class="project-link">查看详情</a>
+                        ${githubLink}
+                    </div>
+                `;
+                projectsContainer.appendChild(projectCard);
+            });
+        })
+        .catch(error => {
+            console.error('加载项目失败:', error);
+            document.getElementById('projects-container').innerHTML = 
+                '<div class="error">加载项目失败，请稍后再试</div>';
+        });
+    </script>
+
+    <!-- 文章部分 -->
+    <section id="articles" class="articles">
+        <div class="container">
+            <h2>最新文章</h2>
+            <p>这里是我分享的技术文章和思考</p>
+            
+            <div class="articles-grid" id="latest-articles">
+                <!-- 文章将通过JavaScript动态加载 -->
+                <div class="loading">加载中...</div>
+            </div>
+            
+            <div class="articles-link">
+                <a href="articles.html" class="btn">查看所有文章</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    // 加载最新3篇文章
+    fetch('../data/articles.json')
+        .then(response => response.json())
+        .then(articles => {
+            // 按日期排序，确保最新的文章在前面
+            const sortedArticles = articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+            // 只取前3篇
+            const latestArticles = sortedArticles.slice(0, 3);
+            const articlesContainer = document.getElementById('latest-articles');
+            
+            // 清空加载提示
+            articlesContainer.innerHTML = '';
+            
+            // 生成文章卡片
+            latestArticles.forEach(article => {
+                const articleCard = document.createElement('div');
+                articleCard.className = 'article-card';
+                articleCard.innerHTML = `
+                    <h3>${article.title}</h3>
+                    <p class="article-date">发布于 ${article.date}</p>
+                    <p>${article.excerpt}</p>
+                    <a href="${article.link}" class="project-link">阅读全文 <i class="fa fa-arrow-right"></i></a>
+                `;
+                articlesContainer.appendChild(articleCard);
+            });
+        })
+        .catch(error => {
+            console.error('加载文章失败:', error);
+            document.getElementById('latest-articles').innerHTML = '<div class="error">加载文章失败，请稍后再试</div>';
+        });
+    </script>
+
+    <section id="contributions" class="contributions">
+        <div class="container">
+            <h2>我的代码贡献</h2>
+            <p>展示我在GitHub上的活动情况</p>
+            
+            <div class="contribution-matrices">
+                <!-- GitHub贡献矩阵 -->
+                <div class="contribution-card">
+                    <h3><i class="fa fa-github"></i> GitHub 贡献</h3>
+                    <!-- 星期行 + 贡献方格 -->
+                    <img class="contribution-img" src="https://ghchart.rshah.org/ningjinghuojian" alt="ningjinghuojian's Github chart" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- B站视频展示模块 -->
+    <section id="videos" class="videos">
+        <div class="container">
+            <h2>我的B站视频</h2>
+            <p>这里是我在B站上传的原创内容，欢迎观看和关注~</p>
+            
+            <!-- 视频网格布局 -->
+            <div class="videos-grid">
+                <!-- 视频1（替换成你的视频嵌入代码） -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <!-- 替换下面的iframe代码为你自己的B站视频嵌入代码 -->
+                        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115065931959750&bvid=BV1PzYQzWEct&cid=31845781498&p=1" 
+                            scrolling="no" 
+                            border="0" 
+                            frameborder="no" 
+                            framespacing="0" 
+                            allowfullscreen="true">
+                        </iframe>
+                    </div>
+                    <h3>𝐖𝐡𝐚𝐭 𝐰𝐨𝐮𝐥𝐝 𝐲𝐨𝐮 𝐝𝐨 𝐢𝐟 𝐈 𝐚𝐛𝐬𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐭𝐨𝐦𝐨𝐫𝐫𝐨𝐰?</h3>
+                    <p>视频简介：the amazing digital circus cut </p>
+                    <a href="https://space.bilibili.com/290812002" target="_blank" class="project-link">
+                        去B站观看 <i class="fa fa-external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 联系 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>联系我</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>联系方式</h3>
+                    <div class="contact-item">
+                        <i class="fa fa-envelope"></i>
+                        <span>2030430934@qq.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa fa-map-marker"></i>
+                        <span>辽宁工程技术大学人工智能+创业团队</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/ningjinghuojian" aria-label="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://space.bilibili.com/290812002" aria-label="bilibili"><i class="fa-brands fa-bilibili"></i></a>
+                        <a href="https://codeforces.com/profile/PeaceRocket" aria-label="codeforces"><i class="fa-solid fa-code"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 宁静空间PeaceSpace. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
