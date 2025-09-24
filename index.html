@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>宁静空间</title>
     <script src="https://kit.fontawesome.com/7fa081f250.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="pages/styles.css">
+    <link rel="stylesheet" href="/PeaceSpace/pages/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
@@ -99,7 +99,7 @@
 
     <script>
     // 加载项目数据（与文章加载逻辑保持一致）
-    fetch('data/projects.json')
+    fetch('/PeaceSpace/data/projects.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('网络响应不正常');
@@ -165,7 +165,7 @@
 
     <script>
     // 加载最新3篇文章
-    fetch('data/articles.json')
+    fetch('/PeaceSpace/data/articles.json')
         .then(response => response.json())
         .then(articles => {
             // 按日期排序，确保最新的文章在前面
