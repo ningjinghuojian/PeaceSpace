@@ -2,7 +2,7 @@
     {
         "id": 1,
         "title": "前端性能优化的5个实用技巧",
-        "link": "articles/performance-optimization.html",
+        "link": "/PeaceSpace/articles/performance-optimization.html",
         "date": "2025-03-15",
         "tag": "前端开发",
         "readTime": "8分钟",
@@ -11,7 +11,7 @@
     {
         "id": 2,
         "title": "React与Vue：深入对比分析",
-        "link": "articles/react-vs-vue.html",
+        "link": "/PeaceSpace/articles/react-vs-vue.html",
         "date": "2025-02-28",
         "tag": "框架对比",
         "readTime": "12分钟",
@@ -20,10 +20,11 @@
     {
         "id": 3,
         "title": "Node.js后端开发最佳实践",
-        "link": "articles/nodejs-best-practices.html",
+        "link": "/PeaceSpace/articles/nodejs-best-practices.html",
         "date": "2025-01-10",
         "tag": "后端开发",
         "readTime": "10分钟",
         "excerpt": "分享Node.js项目开发中的架构设计、错误处理和安全性考虑。学习如何构建可扩展、可维护的Node.js应用程序..."
     }
 ]
+
