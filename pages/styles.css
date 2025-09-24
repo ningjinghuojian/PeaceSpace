@@ -130,7 +130,7 @@ section {
     min-height: calc(100vh - 70px);
     display: flex;
     align-items: center;
-    background-image: url('images/backround1.png');
+    background-image: url('/PeaceSpace/images/backround1.png');
     background-size: cover; /* 图片覆盖整个区域 */
     background-position: center; /* 图片居中显示 */
     background-repeat: no-repeat; /* 图片不重复 */
