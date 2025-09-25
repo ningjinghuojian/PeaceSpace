@@ -201,7 +201,7 @@ section {
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 3rem;
 }
 
 .skill-card {
@@ -508,6 +508,275 @@ section {
     margin-top: 2rem;
 }
 
+/* Codeforces模块独立样式 */
+.codeforces-section {
+    padding: 8rem 0;
+    background-color: #f0f4f8;
+    color: #1e293b;
+}
+
+.codeforces-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.codeforces-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #2563eb;
+    font-weight: 700;
+}
+
+.codeforces-section p {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+.codeforces-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto; 
+    gap: 3rem;
+}
+
+.codeforces-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.codeforces-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.codeforces-card i {
+    font-size: 2.5rem;
+    color: #2563eb;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.codeforces-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+/* 用户信息样式 */
+.user-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.info-item h4 {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.info-item p {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    color: #1e293b;
+    text-align: left;
+}
+
+/* 图表容器样式 */
+.chart-wrapper {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    margin-top: 1rem;
+}
+
+/* 日历相关样式 */
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.calendar-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 1rem 0;
+}
+
+.calendar {
+    display: flex;
+    gap: 3px;
+    margin: 1rem 0;
+}
+
+.month-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 15px;
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 0.5rem;
+}
+
+.weekdays {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-right: 5px;
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.weekday {
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 5px;
+}
+
+.weeks {
+    display: flex;
+    gap: 3px;
+}
+
+.week {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.day {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    background-color: #ebedf0;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.day:hover {
+    transform: scale(1.2);
+}
+
+.day:hover::after {
+    content: attr(data-date) ": " attr(data-count) " 提交";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 41, 59, 0.9);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.day[data-level="1"] { background-color: #9be9a8; }
+.day[data-level="2"] { background-color: #40c463; }
+.day[data-level="3"] { background-color: #30a14e; }
+.day[data-level="4"] { background-color: #216e39; }
+
+/* 统计信息样式 */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.stat-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 80px;
+}
+
+.stat-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-align: center;
+}
+
+/* 年份选择器样式 */
+.year-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.year-selector select {
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #cbd5e1;
+    background-color: white;
+    font-size: 0.95rem;
+    color: #1e293b;
+}
+
+.activity-type {
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .codeforces-section {
+        padding: 5rem 0;
+    }
+    
+    .codeforces-section h2 {
+        font-size: 2rem;
+    }
+    
+    .full-width {
+        grid-column: 1;
+    }
+    
+    .user-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-wrapper {
+        height: 200px;
+    }
+}
+    
 /* 贡献模块整体样式：深色背景 + 浅色文字 */
 .contributions {
     padding: 8rem 0;
