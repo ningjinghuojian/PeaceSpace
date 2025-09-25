@@ -544,11 +544,6 @@ section {
     gap: 3rem;
 }
 
-@media (max-width: 768px) {
-    .codeforces-grid {
-        grid-template-columns: 1fr;
-    }
-}
 
 .codeforces-card {
     background-color: white;
@@ -920,62 +915,6 @@ section {
     transform: scale(1.2);
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: white;
-        padding: 1rem 0;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links a {
-        padding: 0.8rem 20px;
-        border-bottom: 1px solid #eee;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .hero .container,
-    .about-content,
-    .contact-content {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        text-align: center;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .animation-container {
-        height: 300px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    section {
-        padding: 3rem 0;
-    }
-}
-
 /* B站视频模块样式 */
 .videos {
     padding: 8rem 0;
@@ -1067,6 +1006,12 @@ section {
 
 /* 响应式调整（手机上优化显示） */
 @media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    section {
+        padding: 3rem 0;
+    }
     .videos {
         padding: 5rem 0;
     }
@@ -1081,5 +1026,50 @@ section {
     .contribution-img {
         width: 100%; /* 手机端图片宽度自适应 */
         max-width: 100%; /* 取消最大宽度限制 */
+    }
+    .codeforces-grid {
+        grid-template-columns: 1fr;
+    }
+        .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 1rem 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 0.8rem 20px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero .container,
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .animation-container {
+        height: 300px;
     }
 }
