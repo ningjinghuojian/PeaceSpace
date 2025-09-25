@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>宁静空间</title>
     <script src="https://kit.fontawesome.com/7fa081f250.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/PeaceSpace/pages/codeforcesChart.js"></script>
     <link rel="stylesheet" href="/PeaceSpace/pages/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
@@ -47,7 +49,7 @@
                     <p>我不断学习新技术，致力于为用户提供最佳的数字体验。无论是媒体制作、Web应用还是移动应用，我都能提供专业的解决方案。</p>
                 </div>
                 <div class="about-image">
-                    <img src="images/avatar.jpg" alt="个人照片" class="profile-img">
+                    <img src="/PeaceSpace/images/avatar.jpg" alt="个人照片" class="profile-img">
                 </div>
             </div>
         </div>
@@ -93,7 +95,7 @@
             </div>
         </div>
         <div class="projects-link">
-            <a href="\PeaceSpace\pages\projects.html" class="btn">查看所有项目</a>
+            <a href="/PeaceSpace/pages/projects.html" class="btn">查看所有项目</a>
         </div>
     </section>
 
@@ -195,6 +197,91 @@
             document.getElementById('latest-articles').innerHTML = '<div class="error">加载文章失败，请稍后再试</div>';
         });
     </script>
+
+
+    <!-- Codeforces数据报告模块 -->
+    <section id="codeforces" class="codeforces-section">
+        <div class="container">
+            <h2>我的Codeforces数据</h2>
+            <p>展示我的编程竞赛表现和练习情况</p>
+            
+            <div class="codeforces-grid">
+                <!-- 用户信息卡片 -->
+                <div class="codeforces-card">
+                    <i class="fa fa-user-circle"></i>
+                    <h3>用户信息</h3>
+                    <div class="user-info">
+                        <div class="info-item">
+                            <h4>当前Rating</h4>
+                            <p id="currentRating">--</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>最高Rating</h4>
+                            <p id="maxRating">--</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>贡献值</h4>
+                            <p id="contribution">--</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>排名</h4>
+                            <p id="rank">--</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- 题目提交分布 -->
+                <div class="codeforces-card">
+                    <i class="fa fa-pie-chart"></i>
+                    <h3>题目提交分布</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="submissionChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Rating变化图表 -->
+                <div class="codeforces-card  full-width">
+                    <i class="fa fa-line-chart"></i>
+                    <h3>Rating变化趋势</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="ratingChart"></canvas>
+                    </div>
+                </div>               
+                
+                <!-- 提交活动日历 -->
+                <div class="codeforces-card full-width">
+                    <i class="fa fa-calendar"></i>
+                    <h3>提交活动日历</h3>
+                    <div class="calendar-container" id="calendarContainer">
+                        <div class="calendar-header">
+                            <div class="year-selector">
+                                <label for="yearSelect">选择年份:</label>
+                                <select id="yearSelect">
+                                    <!-- 年份选项将通过JavaScript动态添加 -->
+                                </select>
+                            </div>
+                            <div class="activity-type">仅公开活动</div>
+                        </div>
+                        
+                        <div class="calendar" id="calendar">
+                            <!-- 日历内容将通过JavaScript动态生成 -->
+                        </div>
+                        
+                        <div class="month-labels" id="monthLabels">
+                            <!-- 月份标签将通过JavaScript动态生成 -->
+                        </div>
+                        
+                        <div class="stats" id="stats">
+                            <!-- 统计数据将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
 
     <section id="contributions" class="contributions">
         <div class="container">
