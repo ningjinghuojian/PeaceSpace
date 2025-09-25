@@ -161,7 +161,7 @@ section {
 }
 
 .image-container {
-    width: 300%;
+    width: 100%;
     max-width: 300px;
     border-radius: 0%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -187,7 +187,7 @@ section {
 }
 
 .profile-img {
-    width: 300%;
+    width: 100%;
     max-width: 300px;
     border-radius: 0%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -544,6 +544,12 @@ section {
     gap: 3rem;
 }
 
+@media (max-width: 768px) {
+    .codeforces-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .codeforces-card {
     background-color: white;
     border-radius: 10px;
@@ -792,10 +798,9 @@ section {
 }
 
 .contribution-img {
-    width: 400%;
-    max-width: 1000px;
+    width: 100%;
+    max-width: 100%;
     border-radius: 0.12%;
-
 }
 
 /* 联系 */
