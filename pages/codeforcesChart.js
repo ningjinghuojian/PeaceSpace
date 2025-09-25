@@ -1,5 +1,5 @@
 // Codeforces数据处理
-const handle = 'jiangly'; // 使用你的Codeforces用户名
+const handle = 'PeaceRocket'; // 使用你的Codeforces用户名
 
 // 获取用户基本信息
 function getUserInfo() {
@@ -359,4 +359,5 @@ async function loadCodeforcesData() {
 }
 
 // 页面加载完成后加载数据
+
 window.addEventListener('load', loadCodeforcesData);
