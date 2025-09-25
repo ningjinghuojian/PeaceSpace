@@ -5,6 +5,7 @@
 }
 
 .article-header {
+    margin-top: 2rem;
     margin-bottom: 3rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #eee;
@@ -131,4 +132,5 @@
     .article-header h1 {
         font-size: 2rem;
     }
+
 }
