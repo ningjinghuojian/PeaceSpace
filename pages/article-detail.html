@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章详情 | 宁静空间</title>
+    <script src="https://kit.fontawesome.com/7fa081f250.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="article-detail.css">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 引入Markdown渲染库 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/lib/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">宁静空间</a>
+            <nav class="nav-links">
+                <a href="../index.html#home">首页</a>
+                <a href="../index.html#about">关于我</a>
+                <a href="../index.html#skills">技能</a>
+                <a href="../projects.html">项目</a>
+                <a href="../articles.html">文章</a>
+                <a href="../index.html#contact">联系</a>
+            </nav>
+            <button class="menu-toggle" aria-label="菜单">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 文章详情内容 -->
+    <section class="article-detail">
+        <div class="container">
+            <div class="loading">加载中...</div>
+            <div class="article-content" id="article-content" style="display: none;">
+                <!-- 文章标题区域 -->
+                <div class="article-header">
+                    <h1 id="article-title"></h1>
+                    <p class="article-meta">
+                        <span><i class="fa fa-calendar"></i> <span id="article-date"></span></span>
+                        <span><i class="fa fa-tag"></i> <span id="article-tag"></span></span>
+                        <span><i class="fa fa-clock-o"></i> 阅读时间: <span id="article-readTime"></span></span>
+                    </p>
+                </div>
+
+                <!-- 文章主体内容 -->
+                <div class="article-body">
+                    <div class="article-sidebar">
+                        <div class="toc">
+                            <h3>文章目录</h3>
+                            <ul id="article-toc"></ul>
+                        </div>
+                    </div>
+                    <div class="article-main">
+                        <div id="article-markdown-content"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="error" style="display: none;">加载文章失败，请稍后再试</div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 宁静空间PeaceSpace. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="article-detail.js"></script>
+</body>
+</html>

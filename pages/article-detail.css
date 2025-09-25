@@ -1,0 +1,134 @@
+/* 文章详情页样式 */
+.article-detail {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.article-header {
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.article-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.article-body {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+}
+
+.article-sidebar {
+    position: sticky;
+    top: 90px;
+    align-self: start;
+}
+
+.toc {
+    background-color: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.toc h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.toc ul {
+    list-style: none;
+}
+
+.toc li {
+    margin-bottom: 0.8rem;
+}
+
+.toc a {
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.toc a:hover {
+    color: var(--primary-color);
+}
+
+.article-main {
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Markdown内容样式 */
+#article-markdown-content h2 {
+    margin: 2rem 0 1rem;
+    color: var(--dark-color);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+#article-markdown-content h3 {
+    margin: 1.5rem 0 0.8rem;
+    color: var(--dark-color);
+}
+
+#article-markdown-content p {
+    margin-bottom: 1.2rem;
+}
+
+#article-markdown-content ul, 
+#article-markdown-content ol {
+    margin-bottom: 1.2rem;
+    padding-left: 1.5rem;
+}
+
+#article-markdown-content li {
+    margin-bottom: 0.5rem;
+}
+
+#article-markdown-content pre {
+    background-color: #f8fafc;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.2rem;
+    overflow-x: auto;
+}
+
+#article-markdown-content code {
+    font-family: 'Fira Code', monospace;
+}
+
+#article-markdown-content blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-bottom: 1.2rem;
+    color: #666;
+}
+
+#article-markdown-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 1.5rem 0;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .article-body {
+        grid-template-columns: 1fr;
+    }
+    
+    .article-sidebar {
+        position: static;
+        margin-bottom: 2rem;
+    }
+    
+    .article-header h1 {
+        font-size: 2rem;
+    }
+}
