@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面未找到</title>
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="404.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
+    <div class="container">
+        <!-- 404数字展示 -->
+        <div class="error-number">
+            <span class="digit" data-digit="4">4</span>
+            <span class="zero">0</span>
+            <span class="digit" data-digit="4">4</span>
+        </div>
+        
+        <!-- 错误信息 -->
+        <div class="error-message">
+            <h1>页面好像迷路了</h1>
+            <p>我们无法找到您请求的页面。它可能已被移动、删除或从未存在过。</p>
+        </div>
+        
+        <!-- 导航选项 -->
+        <div class="actions">
+            <a href="index.html" class="btn home-btn">
+                <i class="fa fa-home"></i> 返回首页
+            </a>
+            <a href="/contact" class="btn contact-btn">
+                <i class="fa fa-envelope"></i> 联系我们
+            </a>
+        </div>
+        
+        <!-- 装饰元素 -->
+        <div class="astronaut"></div>
+        <div class="satellite"></div>
+    </div>
+
+    <script>
+        // 添加页面载入动画
+        document.addEventListener('DOMContentLoaded', () => {
+            // 数字动画效果
+            const digits = document.querySelectorAll('.digit');
+            digits.forEach(digit => {
+                setTimeout(() => {
+                    digit.classList.add('animate-in');
+                }, 300);
+            });
+            
+            // 零的脉冲动画
+            const zero = document.querySelector('.zero');
+            setInterval(() => {
+                zero.classList.add('pulse');
+                setTimeout(() => {
+                    zero.classList.remove('pulse');
+                }, 1000);
+            }, 3000);
+            
+            // 按钮悬停效果增强
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    btn.classList.add('hover-effect');
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.classList.remove('hover-effect');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+    
