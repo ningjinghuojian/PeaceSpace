@@ -1054,6 +1054,18 @@ section {
         max-width: 100%; /* 取消最大宽度限制 */
         box-sizing: border-box; /* 确保内边距不撑大宽度 */
     }
+
+        .calendar {
+            width: 100%;
+            box-sizing: border-box;
+            min-width: fit-content; /* 确保日历列不强制换行，保持横向结构 */
+        }
+        .calendar-container {
+            overflow-x: auto; /* 横向溢出时显示滚动条，不撑大卡片 */
+        }
+        .week, .weekdays {
+            flex-shrink: 0; /* 禁止日期列/星期列被压缩，保证日历结构完整 */
+        }
     
     /* 用户信息区域改为单列 */
     .user-info {
