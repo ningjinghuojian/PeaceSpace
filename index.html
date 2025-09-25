@@ -160,7 +160,7 @@
             </div>
             
             <div class="articles-link">
-                <a href="\PeaceSpace\pages\articles.html" class="btn">查看所有文章</a>
+                <a href="/PeaceSpace/pages/articles.html" class="btn">查看所有文章</a>
             </div>
         </div>
     </section>
@@ -184,7 +184,7 @@
                 const articleCard = document.createElement('div');
                 articleCard.className = 'article-card';
                 articleCard.innerHTML = `
-                    <h3>${article.title}</h3>
+                    <h3>${article.artiTitle}</h3>
                     <p class="article-date">发布于 ${article.date}</p>
                     <p>${article.excerpt}</p>
                     <a href="${article.link}" class="project-link">阅读全文 <i class="fa fa-arrow-right"></i></a>
