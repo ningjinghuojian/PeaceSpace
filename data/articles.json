@@ -1,8 +1,9 @@
 [
     {
         "id": 1,
-        "title": "前端性能优化的5个实用技巧",
-        "link": "/PeaceSpace/articles/performance-optimization.html",
+        "title": "a",
+        "artiTitle": "前端的经典描述",
+        "link": "/PeaceSpace/pages/article-detail.html?id=1",
         "date": "2025-03-15",
         "tag": "前端开发",
         "readTime": "8分钟",
@@ -10,8 +11,9 @@
     },
     {
         "id": 2,
-        "title": "React与Vue：深入对比分析",
-        "link": "/PeaceSpace/articles/react-vs-vue.html",
+        "title": "a",
+        "artiTitle": "主流后端模型生态研究",
+        "link": "/PeaceSpace/pages/article-detail.html?id=2",
         "date": "2025-02-28",
         "tag": "框架对比",
         "readTime": "12分钟",
@@ -19,8 +21,9 @@
     },
     {
         "id": 3,
-        "title": "Node.js后端开发最佳实践",
-        "link": "/PeaceSpace/articles/nodejs-best-practices.html",
+        "title": "a",
+        "artiTitle": "Node.js项目开发架构思想",
+        "link": "/PeaceSpace/pages/article-detail.html?id=3",
         "date": "2025-01-10",
         "tag": "后端开发",
         "readTime": "10分钟",
