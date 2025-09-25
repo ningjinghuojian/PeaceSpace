@@ -155,11 +155,21 @@ function createSubmissionChart(submissions) {
             datasets: [{
                 data: counts,
                 backgroundColor: [
-                    'var(--primary-color)',
-                    'var(--secondary-color)',
-                    'var(--accent-color)',
-                    'var(--dark-color)',
-                    'var(--gray-color)'
+                    '#e6f4ff', // 极浅蓝（接近白色）
+                    '#bfddff', // 浅淡蓝
+                    '#99c9ff', // 淡天蓝
+                    '#73b5ff', // 亮蓝
+                    '#4da1ff', // 中浅蓝
+                    '#278dff', // 标准蓝
+                    '#0079f2', // 稍深蓝
+                    '#0066cc', // 中蓝
+                    '#0052b3', // 深蓝
+                    '#003d80', // 暗蓝
+                    '#0080b3', // 青调蓝（带轻微青色）
+                    '#4d5fff', // 紫调蓝（带轻微紫色）
+                    '#263399', // 深紫蓝
+                    '#1a2266', // 近黑蓝
+                    '#0d1133'  // 极深蓝（接近黑色）
                 ],
                 borderWidth: 1,
                 hoverOffset: 15
@@ -361,3 +371,4 @@ async function loadCodeforcesData() {
 // 页面加载完成后加载数据
 
 window.addEventListener('load', loadCodeforcesData);
+
