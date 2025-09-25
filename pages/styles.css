@@ -1050,6 +1050,8 @@ section {
     .codeforces-card {
         padding: 1.5rem; /* 减少卡片内边距 */
         margin: 0 -5px; /* 轻微负边距抵消容器间距 */
+        width: 100%; /* 手机端图片宽度自适应 */
+        max-width: 100%; /* 取消最大宽度限制 */
     }
     
     /* 用户信息区域改为单列 */
