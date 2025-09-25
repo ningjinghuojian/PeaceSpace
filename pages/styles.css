@@ -1030,7 +1030,69 @@ section {
     .codeforces-grid {
         grid-template-columns: 1fr;
     }
-        .nav-links {
+
+        .codeforces-section {
+        padding: 5rem 0; /* 减少垂直间距 */
+    }
+    
+    .codeforces-section .container {
+        padding: 0 15px; /* 缩小容器内边距，避免内容贴边 */
+        width: 100%; /* 全屏宽度利用 */
+    }
+    
+    .codeforces-grid {
+        grid-template-columns: 1fr; /* 强制单列布局 */
+        gap: 2rem; /* 缩小卡片间距 */
+    }
+    
+    .codeforces-card {
+        padding: 1.5rem; /* 减少卡片内边距 */
+        margin: 0 -5px; /* 轻微负边距抵消容器间距 */
+    }
+    
+    /* 用户信息区域改为单列 */
+    .user-info {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    /* 图表容器适应手机高度 */
+    .chart-wrapper {
+        height: 200px;
+    }
+    
+    /* 日历元素缩小适配 */
+    .day {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .weekday {
+        height: 14px;
+        font-size: 0.65rem;
+    }
+    
+    /* 统计信息调整 */
+    .stats {
+        gap: 0.8rem;
+        padding: 0 0.5rem;
+    }
+    
+    .stat-value {
+        font-size: 1.1rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+    }
+    
+    /* 月份标签自适应 */
+    .month-labels {
+        font-size: 0.75rem;
+        padding: 0 10px;
+    }
+    
+    .nav-links {
         display: none;
         flex-direction: column;
         position: absolute;
