@@ -1029,6 +1029,8 @@ section {
     }
     .codeforces-grid {
         grid-template-columns: 1fr;
+        width: 100%; /* 手机端图片宽度自适应 */
+        max-width: 100%; /* 取消最大宽度限制 */
     }
 
         .codeforces-section {
