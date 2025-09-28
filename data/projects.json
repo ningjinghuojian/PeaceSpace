@@ -2,36 +2,42 @@
     {
         "id": 1,
         "title": "辽工程太阳石智慧教育平台",
-        "link": "/PeaceSpace/projects/articles/ecommerce.html",
+        "tag" : "sun-stone",
+        "description": "基于SpringBoot和Vue开发的智慧教育平台，实现师生资源共享与在线互动",
         "image": "https://picsum.photos/seed/ecommerce/600/400",
-        "date": "2025-04-10",
+        "images": [
+            "https://picsum.photos/seed/ecommerce/600/400",
+            "https://picsum.photos/seed/ecommerce/600/400",
+            "https://picsum.photos/seed/ecommerce/600/400"
+        ],
+        "link": "/PeaceSpace/pages/project-detail.html?id=1",
+        "github": "https://github.com/example/education-platform",
         "category": "Web应用",
-        "techStack": "springboot,vue,mysql",
-        "description": "一个支撑全校同学在线交流练习的学习资源集合平台。",
-        "github": "https://github.com/yourusername/ecommerce-platform"
+        "techStack": ["springboot", "vue", "mysql", "redis"],
+        "date": "2025-6-4",
+        "duration": "3个月",
+        "status": "已上线",
+        "features": ["用户管理系统", "课程资源库", "在线讨论区", "成绩统计分析"],
+        "challenges": "解决了高并发下的资源加载问题，通过Redis缓存减轻数据库压力；优化了前端渲染性能，实现大型课程列表的懒加载。"
     },
     {
         "id": 2,
         "title": "智慧党建",
-        "link": "/PeaceSpace/projects/articles/dashboard.html",
-        "image": "https://picsum.photos/seed/dashboard/600/400",
-        "date": "2025-03-05",
-        "category": "游戏展馆",
-        "techStack": "blender,unity",
-        "description": "基于blender建模，基于unity实现交互的党建展馆。",
-        "github": "https://github.com/yourusername/data-dashboard"
-    },
-    {
-        "id": 3,
-        "title": "辽工程学业预警系统",
-        "link": "/PeaceSpace/projects/articles/social-app.html",
-        "image": "https://picsum.photos/seed/social/600/400",
-        "date": "2025-01-20",
-        "category": "Web应用",
-        "techStack": "vue,flask",
-        "description": "辽宁工程技术大学教师学业预警整理信息与数据的专用平台。",
-        "github": ""
+        "tag" : "intellent-party",
+        "description": "使用blender和unity实现党史展馆搭建展示",
+        "image": "https://picsum.photos/seed/ecommerce/600/400",
+        "images": [
+            "https://picsum.photos/seed/ecommerce/600/400",
+            "https://picsum.photos/seed/ecommerce/600/400"
+        ],
+        "link": "/PeaceSpace/pages/project-detail.html?id=2",
+        "github": "https://github.com/example/ecommerce-frontend",
+        "category": "智能3d设计",
+        "techStack": ["blender", "unity"],
+        "date": "2025-2-4",
+        "duration": "2个月",
+        "status": "已完成",
+        "features": ["智能体交互", "购物车功能", "订单管理", "支付集成"],
+        "challenges": "解决了显示场景下的场馆搭建问题；"
     }
-
 ]
-
