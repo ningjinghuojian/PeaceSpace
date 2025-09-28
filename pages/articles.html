@@ -6,6 +6,7 @@
     <title>我的文章 | 宁静空间</title>
     <script src="https://kit.fontawesome.com/7fa081f250.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="articles.css">
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
@@ -35,6 +36,31 @@
         </div>
     </section>
 
+    <!-- 文章筛选和搜索区域 -->
+    <section class="article-filters">
+        <div class="container">
+            <div class="filter-controls">
+                <div class="search-box">
+                    <input type="text" id="article-search" placeholder="搜索文章标题或简介...">
+                    <button id="search-btn"><i class="fa fa-search"></i></button>
+                </div>
+                
+                <div class="category-filters">
+                    <select id="category-level-1">
+                        <option value="">一级分类</option>
+                    </select>
+                    <select id="category-level-2">
+                        <option value="">二级分类</option>
+                    </select>
+                    <select id="category-level-3">
+                        <option value="">三级分类</option>
+                    </select>
+                    <button id="reset-filter">重置筛选</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 文章列表 -->
     <section class="all-articles">
         <div class="container">
@@ -46,38 +72,199 @@
     </section>
 
     <script>
+    // 存储所有文章数据
+    let allArticles = [];
+    // 存储所有分类数据
+    let allCategories = {
+        level1: new Set(),
+        level2: new Map(), // key: level1, value: Set of level2
+        level3: new Map()  // key: level1|level2, value: Set of level3
+    };
+
+    // 初始化分类数据
+    function initCategories(articles) {
+        articles.forEach(article => {
+            const [level1, level2, level3] = article.categories || [];
+            
+            if (level1) {
+                allCategories.level1.add(level1);
+                
+                if (!allCategories.level2.has(level1)) {
+                    allCategories.level2.set(level1, new Set());
+                }
+                
+                if (level2) {
+                    allCategories.level2.get(level1).add(level2);
+                    const key = `${level1}|${level2}`;
+                    
+                    if (!allCategories.level3.has(key)) {
+                        allCategories.level3.set(key, new Set());
+                    }
+                    
+                    if (level3) {
+                        allCategories.level3.get(key).add(level3);
+                    }
+                }
+            }
+        });
+        
+        // 填充一级分类下拉框
+        const level1Select = document.getElementById('category-level-1');
+        allCategories.level1.forEach(cat => {
+            const option = document.createElement('option');
+            option.value = cat;
+            option.textContent = cat;
+            level1Select.appendChild(option);
+        });
+        
+        // 一级分类变化时更新二级分类
+        level1Select.addEventListener('change', updateLevel2Categories);
+        // 二级分类变化时更新三级分类
+        document.getElementById('category-level-2').addEventListener('change', updateLevel3Categories);
+        // 重置筛选按钮
+        document.getElementById('reset-filter').addEventListener('click', resetFilters);
+        // 搜索功能
+        document.getElementById('search-btn').addEventListener('click', performSearch);
+        document.getElementById('article-search').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
+    }
+
+    // 更新二级分类下拉框
+    function updateLevel2Categories() {
+        const level1 = document.getElementById('category-level-1').value;
+        const level2Select = document.getElementById('category-level-2');
+        const level3Select = document.getElementById('category-level-3');
+        
+        // 清空二级和三级分类
+        level2Select.innerHTML = '<option value="">二级分类</option>';
+        level3Select.innerHTML = '<option value="">三级分类</option>';
+        
+        if (level1 && allCategories.level2.has(level1)) {
+            allCategories.level2.get(level1).forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat;
+                option.textContent = cat;
+                level2Select.appendChild(option);
+            });
+        }
+        
+        // 触发筛选
+        filterArticles();
+    }
+
+    // 更新三级分类下拉框
+    function updateLevel3Categories() {
+        const level1 = document.getElementById('category-level-1').value;
+        const level2 = document.getElementById('category-level-2').value;
+        const level3Select = document.getElementById('category-level-3');
+        
+        // 清空三级分类
+        level3Select.innerHTML = '<option value="">三级分类</option>';
+        
+        if (level1 && level2) {
+            const key = `${level1}|${level2}`;
+            if (allCategories.level3.has(key)) {
+                allCategories.level3.get(key).forEach(cat => {
+                    const option = document.createElement('option');
+                    option.value = cat;
+                    option.textContent = cat;
+                    level3Select.appendChild(option);
+                });
+            }
+        }
+        
+        // 触发筛选
+        filterArticles();
+    }
+
+    // 执行搜索
+    function performSearch() {
+        filterArticles();
+    }
+
+    // 重置筛选条件
+    function resetFilters() {
+        document.getElementById('article-search').value = '';
+        document.getElementById('category-level-1').value = '';
+        document.getElementById('category-level-2').innerHTML = '<option value="">二级分类</option>';
+        document.getElementById('category-level-3').innerHTML = '<option value="">三级分类</option>';
+        filterArticles();
+    }
+
+    // 筛选文章
+    function filterArticles() {
+        const searchTerm = document.getElementById('article-search').value.toLowerCase();
+        const level1 = document.getElementById('category-level-1').value;
+        const level2 = document.getElementById('category-level-2').value;
+        const level3 = document.getElementById('category-level-3').value;
+        
+        // 应用筛选条件
+        const filteredArticles = allArticles.filter(article => {
+            // 搜索筛选
+            const matchesSearch = searchTerm === '' || 
+                article.artiTitle.toLowerCase().includes(searchTerm) ||
+                article.excerpt.toLowerCase().includes(searchTerm);
+            
+            // 分类筛选
+            const [artLevel1, artLevel2, artLevel3] = article.categories || [];
+            const matchesCategory = 
+                (level1 === '' || artLevel1 === level1) &&
+                (level2 === '' || artLevel2 === level2) &&
+                (level3 === '' || artLevel3 === level3);
+            
+            return matchesSearch && matchesCategory;
+        });
+        
+        // 显示筛选结果
+        renderArticles(filteredArticles);
+    }
+
+    // 渲染文章列表
+    function renderArticles(articles) {
+        const articlesContainer = document.getElementById('all-articles');
+        articlesContainer.innerHTML = '';
+        
+        if (articles.length === 0) {
+            articlesContainer.innerHTML = '<div class="error">没有找到匹配的文章</div>';
+            return;
+        }
+        
+        articles.forEach((article, index) => {
+            const articleElement = document.createElement('article');
+            articleElement.className = 'full-article-card';
+            if (index === articles.length - 1) {
+                articleElement.classList.add('last-article');
+            }
+            
+            articleElement.innerHTML = `
+                <h2><a href="${article.link}">${article.artiTitle}</a></h2>
+                <p class="article-meta">
+                    <span><i class="fa fa-calendar"></i> ${article.date}</span>
+                    <span><i class="fa fa-tag"></i> ${article.tag}</span>
+                    <span><i class="fa fa-folder"></i> ${article.categories.join(' / ')}</span>
+                    <span><i class="fa fa-clock-o"></i> 阅读时间: ${article.readTime}</span>
+                </p>
+                <p>${article.excerpt}</p>
+                <a href="${article.link}" class="read-more">继续阅读 <i class="fa fa-long-arrow-right"></i></a>
+            `;
+            articlesContainer.appendChild(articleElement);
+        });
+    }
+
     // 加载所有文章
     fetch('../data/articles.json')
         .then(response => response.json())
         .then(articles => {
             // 按日期排序，最新的在前
             const sortedArticles = articles.sort((a, b) => new Date(b.date) - new Date(a.date));
-            const articlesContainer = document.getElementById('all-articles');
+            allArticles = sortedArticles;
             
-            // 清空加载提示
-            articlesContainer.innerHTML = '';
+            // 初始化分类
+            initCategories(sortedArticles);
             
-            // 生成文章列表
-            sortedArticles.forEach((article, index) => {
-                const articleElement = document.createElement('article');
-                articleElement.className = 'full-article-card';
-                // 最后一篇文章不需要底部边框
-                if (index === sortedArticles.length - 1) {
-                    articleElement.classList.add('last-article');
-                }
-                
-                articleElement.innerHTML = `
-                    <h2><a href="${article.link}">${article.artiTitle}</a></h2>
-                    <p class="article-meta">
-                        <span><i class="fa fa-calendar"></i> ${article.date}</span>
-                        <span><i class="fa fa-tag"></i> ${article.tag}</span>
-                        <span><i class="fa fa-clock-o"></i> 阅读时间: ${article.readTime}</span>
-                    </p>
-                    <p>${article.excerpt}</p>
-                    <a href="${article.link}" class="read-more">继续阅读 <i class="fa fa-long-arrow-right"></i></a>
-                `;
-                articlesContainer.appendChild(articleElement);
-            });
+            // 初始渲染所有文章
+            renderArticles(sortedArticles);
         })
         .catch(error => {
             console.error('加载文章失败:', error);
