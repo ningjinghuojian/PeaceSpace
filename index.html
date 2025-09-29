@@ -10,6 +10,53 @@
     <link rel="stylesheet" href="/PeaceSpace/pages/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
+<script>
+// 加载B站视频数据
+fetch('/PeaceSpace/data/videos.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('网络响应不正常');
+        }
+        return response.json();
+    })
+    .then(videos => {
+        const videosContainer = document.getElementById('videos-container');
+        videosContainer.innerHTML = ''; // 清空加载提示
+        
+        if (videos.length === 0) {
+            videosContainer.innerHTML = '<div class="no-videos">暂无视频内容</div>';
+            return;
+        }
+        
+        // 生成视频卡片
+        videos.forEach(video => {
+            const videoCard = document.createElement('div');
+            videoCard.className = 'video-card';
+            videoCard.innerHTML = `
+                <div class="video-container">
+                    <iframe src="${video.iframeSrc}" 
+                            scrolling="no" 
+                            border="0" 
+                            frameborder="no" 
+                            framespacing="0" 
+                            allowfullscreen="true">
+                    </iframe>
+                </div>
+                <h3>${video.title}</h3>
+                <p>${video.description}</p>
+                <a href="${video.link}" target="_blank" class="project-link">
+                    去B站观看 <i class="fa fa-external-link"></i>
+                </a>
+            `;
+            videosContainer.appendChild(videoCard);
+        });
+    })
+    .catch(error => {
+        console.error('加载视频失败:', error);
+        document.getElementById('videos-container').innerHTML = 
+            '<div class="error">加载视频失败，请稍后再试</div>';
+    });
+</script>
 <body>
     <!-- 导航栏 -->
     <header class="navbar">
