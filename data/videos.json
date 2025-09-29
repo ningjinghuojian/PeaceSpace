@@ -5,5 +5,12 @@
         "description": "视频简介：the amazing digital circus cut",
         "iframeSrc": "//player.bilibili.com/player.html?isOutside=true&aid=115065931959750&bvid=BV1PzYQzWEct&cid=31845781498&p=1",
         "link": "https://space.bilibili.com/290812002"
+    },
+    {
+        "id": 1,
+        "title": "刺客信条|转身刺",
+        "description": "视频简介：刺客信条剪辑",
+        "iframeSrc": "//player.bilibili.com/player.html?isOutside=true&aid=476814799&bvid=BV1SK411B7DE&cid=938562808&p=1",
+        "link": "https://space.bilibili.com/290812002"
     }
 ]
