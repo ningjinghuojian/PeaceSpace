@@ -305,27 +305,19 @@
             <h2>我的B站视频</h2>
             <p>这里是我在B站上传的原创内容，欢迎观看和关注~</p>
             
-            <!-- 视频网格布局 -->
-            <div class="videos-grid">
-                <!-- 视频1（替换成你的视频嵌入代码） -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <!-- 替换下面的iframe代码为你自己的B站视频嵌入代码 -->
-                        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115065931959750&bvid=BV1PzYQzWEct&cid=31845781498&p=1" 
-                            scrolling="no" 
-                            border="0" 
-                            frameborder="no" 
-                            framespacing="0" 
-                            allowfullscreen="true">
-                        </iframe>
+            <!-- B站视频展示模块 -->
+            <section id="videos" class="videos">
+                <div class="container">
+                    <h2>我的B站视频</h2>
+                    <p>这里是我在B站上传的原创内容，欢迎观看和关注~</p>
+                    
+                    <!-- 视频网格布局 -->
+                    <div class="videos-grid" id="videos-container">
+                        <!-- 视频将通过JavaScript动态加载 -->
+                        <div class="loading">加载中...</div>
                     </div>
-                    <h3>𝐖𝐡𝐚𝐭 𝐰𝐨𝐮𝐥𝐝 𝐲𝐨𝐮 𝐝𝐨 𝐢𝐟 𝐈 𝐚𝐛𝐬𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐭𝐨𝐦𝐨𝐫𝐫𝐨𝐰?</h3>
-                    <p>视频简介：the amazing digital circus cut </p>
-                    <a href="https://space.bilibili.com/290812002" target="_blank" class="project-link">
-                        去B站观看 <i class="fa fa-external-link"></i>
-                    </a>
                 </div>
-            </div>
+            </section>
         </div>
     </section>
 
