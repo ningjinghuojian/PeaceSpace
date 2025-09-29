@@ -88,15 +88,5 @@
     ],
     "readTime": "10分钟",
     "excerpt": "分享太阳石的最新开发日志"
-  },
-  {
-    "id": "6",
-    "title": "这是一个测试文章",
-    "description": "这个是测试文章的标题",
-    "path": "articles/a.md",
-    "date": "2025-09-29",
-    "tags": [
-      "技术，前端，js"
-    ]
   }
 ]
