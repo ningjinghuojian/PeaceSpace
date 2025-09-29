@@ -1,1 +1,43 @@
-[]
+[
+    {
+        "id": 1,
+        "title": "辽工程太阳石智慧教育平台",
+        "tag" : "sun-stone",
+        "description": "基于SpringBoot和Vue开发的智慧教育平台，实现师生资源共享与在线互动",
+        "image": "https://picsum.photos/seed/ecommerce/600/400",
+        "images": [
+            "https://picsum.photos/seed/ecommerce/600/400",
+            "https://picsum.photos/seed/ecommerce/600/400",
+            "https://picsum.photos/seed/ecommerce/600/400"
+        ],
+        "link": "/PeaceSpace/pages/project-detail.html?id=1",
+        "github": "https://github.com/example/education-platform",
+        "category": "Web应用",
+        "techStack": ["springboot", "vue", "mysql", "redis"],
+        "date": "2025-6-4",
+        "duration": "3个月",
+        "status": "已上线",
+        "features": ["用户管理系统", "课程资源库", "在线讨论区", "成绩统计分析"],
+        "challenges": "解决了高并发下的资源加载问题，通过Redis缓存减轻数据库压力；优化了前端渲染性能，实现大型课程列表的懒加载。"
+    },
+    {
+        "id": 2,
+        "title": "智慧建",
+        "tag" : "intellent-party",
+        "description": "使用blender和unity实现史展馆搭建展示",
+        "image": "https://picsum.photos/seed/ecommerce/600/400",
+        "images": [
+            "https://picsum.photos/seed/ecommerce/600/400",
+            "https://picsum.photos/seed/ecommerce/600/400"
+        ],
+        "link": "/PeaceSpace/pages/project-detail.html?id=2",
+        "github": "https://github.com/example/ecommerce-frontend",
+        "category": "智能3d设计",
+        "techStack": ["blender", "unity"],
+        "date": "2025-2-4",
+        "duration": "2个月",
+        "status": "已完成",
+        "features": ["智能体交互", "购物车功能", "订单管理", "支付集成"],
+        "challenges": "解决了显示场景下的场馆搭建问题；"
+    }
+]
