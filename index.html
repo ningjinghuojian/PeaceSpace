@@ -12,7 +12,7 @@
 </head>
 <script>
 // 加载B站视频数据
-fetch('/PeaceSpace/data/videos.json')
+fetch('data/videos.json')
     .then(response => {
         if (!response.ok) {
             throw new Error('网络响应不正常');
@@ -148,7 +148,7 @@ fetch('/PeaceSpace/data/videos.json')
 
     <script>
     // 加载项目数据（与文章加载逻辑保持一致）
-    fetch('/PeaceSpace/data/projects.json')
+    fetch('data/projects.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('网络响应不正常');
@@ -214,7 +214,7 @@ fetch('/PeaceSpace/data/videos.json')
 
     <script>
     // 加载最新3篇文章
-    fetch('/PeaceSpace/data/articles.json')
+    fetch('data/articles.json')
         .then(response => response.json())
         .then(articles => {
             // 按日期排序，确保最新的文章在前面
