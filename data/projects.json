@@ -10,7 +10,7 @@
             "https://picsum.photos/seed/ecommerce/600/400",
             "https://picsum.photos/seed/ecommerce/600/400"
         ],
-        "link": "/PeaceSpace/pages/project-detail.html?id=1",
+        "link": "/pages/project-detail.html?id=1",
         "github": "https://github.com/example/education-platform",
         "category": "Web应用",
         "techStack": ["springboot", "vue", "mysql", "redis"],
@@ -30,7 +30,7 @@
             "https://picsum.photos/seed/ecommerce/600/400",
             "https://picsum.photos/seed/ecommerce/600/400"
         ],
-        "link": "/PeaceSpace/pages/project-detail.html?id=2",
+        "link": "/pages/project-detail.html?id=2",
         "github": "https://github.com/example/ecommerce-frontend",
         "category": "智能3d设计",
         "techStack": ["blender", "unity"],
