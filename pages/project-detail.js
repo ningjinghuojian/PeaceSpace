@@ -117,7 +117,7 @@ async function loadDevelopmentLogs(projectTag) {
     const logsContainer = document.getElementById('logs-container');
     
     try {
-        const response = await fetch('/PeaceSpace/data/articles.json');
+        const response = await fetch('/data/articles.json');
         if (!response.ok) throw new Error('日志加载失败');
         
         const articles = await response.json();
@@ -411,3 +411,4 @@ async function init() {
 // 页面加载完成后初始化
 
 document.addEventListener('DOMContentLoaded', init);
+
