@@ -7,7 +7,7 @@ function getProjectId() {
 // 加载项目数据
 async function loadProjectData() {
     try {
-        const response = await fetch('/PeaceSpace/data/projects.json');
+        const response = await fetch('/data/projects.json');
         if (!response.ok) throw new Error('数据加载失败');
         const projects = await response.json();
         const projectId = getProjectId();
@@ -22,7 +22,7 @@ async function loadProjectData() {
 // 获取相关文章数据
 async function getRelatedArticles(projectTag) {
     try {
-        const response = await fetch('/PeaceSpace/data/articles.json');
+        const response = await fetch('/data/articles.json');
         if (!response.ok) throw new Error('文章数据加载失败');
         const articles = await response.json();
         // 筛选与项目标签相关的文章
@@ -409,4 +409,5 @@ async function init() {
 }
 
 // 页面加载完成后初始化
+
 document.addEventListener('DOMContentLoaded', init);
