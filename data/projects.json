@@ -3,7 +3,7 @@
     "id": 1,
     "title": "辽工程太阳石智慧教育平台",
     "tag": "sun-stone",
-    "description": "基于SpringBoot和Vue开发的智慧教育平台，实现师生资源共享与在线互动",
+    "description": "根据SpringBoot和Vue开发的智慧教育平台，实现师生资源共享与在线互动",
     "image": "https://picsum.photos/seed/ecommerce/600/400",
     "images": [
       "https://picsum.photos/seed/ecommerce/600/400",
