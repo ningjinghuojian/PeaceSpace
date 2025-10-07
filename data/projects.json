@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "id": "2025100701",
+    "title": "辽工程太阳石智慧教育系统",
+    "description": "该教育系统旨在搭建辽宁工程技术大学首个大型师生学习资源交流平台。平台内将拥有oj判题系统，各个科目学习资源集成系统，学生学业评估系统，ai智慧答疑系统。通过丰富的功能期望方便同学们的学习生活。",
+    "image": "/images/projects/2025100701/index.webp",
+    "images": [],
+    "github": "https://github.com/LeenHoOVO/SunStone",
+    "category": "web应用",
+    "techStack": [
+      "springboot",
+      "vue",
+      "docker"
+    ],
+    "duration": "4个月",
+    "status": "开发中",
+    "features": [
+      "用户管理系统",
+      "oj平台",
+      "学习资源平台",
+      "ai智能体"
+    ],
+    "challenges": "1.网页的搭建。2.后端的构建。2.网页的部署",
+    "tag": "sun-stone",
+    "date": "2025-10-07",
+    "link": "1"
+  }
+]
