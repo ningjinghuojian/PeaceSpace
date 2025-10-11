@@ -22,9 +22,9 @@
 
 请复制下方链接，下载考核所需配套资料（含环境配置指南、参考数据集、模型基础代码模板）：
 
-链接：[夸克网盘分享](https://pan.quark.cn/s/2d1c3754c9cd?pwd=TnP6)
+链接：[夸克网盘分享](https://pan.quark.cn/s/b6355bb23e8b?pwd=tRfC)
 
-提取码：TnP6
+提取码：tRfC
 
 如果无法复制，请到微信公众号搜索 
 “宁静火箭will”
